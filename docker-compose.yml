@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: controle_contas_postgres
+    #127.0.0.1 faz com que só o meu computador consiga acessar 
+    ports:
+      - "127.0.0.1:5433:5432"
+    # postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - pgnetwork
+
+  pgadmin:
+    image: dpage/pgadmin4:9.13
+    container_name: pgadmin
+    # pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: 5050 
+    ports:
+      - "127.0.0.1:5050:5050"               
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - pgnetwork
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  pgnetwork:
+
+  spring:
+  jpa:
+    open-in-view: false
