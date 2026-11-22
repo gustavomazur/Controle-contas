@@ -39,6 +39,3 @@ volumes:
 networks:
   pgnetwork:
 
-  spring:
-  jpa:
-    open-in-view: false
