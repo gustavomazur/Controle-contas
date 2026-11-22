@@ -9,7 +9,7 @@ public class LancamentoService {
 
     private final LancamentoRepository lancamentoRepository;
 
-    public LancamentoResponse criarLancamento(LancamentoRequest lancamentoRequest) {
+    public LancamentoResponse criar(LancamentoRequest lancamentoRequest) {
         Lancamento lancamento = new Lancamento();
         lancamento.setDescricao(lancamentoRequest.descricao());
         lancamento.setValor(lancamentoRequest.valor());

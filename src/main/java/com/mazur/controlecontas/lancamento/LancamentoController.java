@@ -20,9 +20,9 @@ public class LancamentoController {
 
 
     @PostMapping
-    public ResponseEntity<LancamentoResponse> criar(@Valid @RequestBody LancamentoRequest request ) {
-        LancamentoResponse response = lancamentoService.criarLancamento(request);
-        URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
+    public ResponseEntity<LancamentoResponse> criar(@Valid @RequestBody LancamentoRequest request) {
+        LancamentoResponse response = lancamentoService.criar(request);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(response.id())
                 .toUri();
